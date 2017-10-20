@@ -2,18 +2,18 @@ from sklearn import linear_model
 
 clf = linear_model.LinearRegression()
 F, N = map(int,input().split())  #no of feautres and no of rows
-ls =pd.read_csv('housedatset.csv')
-un =[]
+X_train =pd.read_csv('housedatset.csv')
+X_test =[]  #give the dataset for testing the house price
 
    
     
 
-ppsqi=[]
+Y_train=[]
 for i in range(0,N):
-    ppsqi.append(ls[i][-1])
-    del ls[i][-1]
+    Y_train.append(ls[i][-1])
+    del X_train[i][-1]
     
 
-clf.fit(ls,ppsqi)
-for i in clf.predict(un):
+clf.fit(X_train,Y_train)
+for i in clf.predict(X_test):
     print("%2.f" % i)
